@@ -20,6 +20,7 @@ public class ListAggregatorTest {
         int sum = aggregator.sum(list);
 
         Assertions.assertEquals(14, sum);
+        //Isto é um teste
     }
 
     @Test
