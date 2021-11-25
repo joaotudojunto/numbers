@@ -9,7 +9,18 @@ import java.util.List;
 public class ListAggregatorTest {
 
     public List<Integer> helperMethod(){
-        return Arrays.asList(1,2,4,2,5);
+        return Arrays.asList(-1,-4, -5);
+        //return Arrays.asList(1,2,4,2,5);
+    }
+    @Test
+    public void max_bug_7263() {
+        List<Integer> list = helperMethod();
+
+        ListAggregator aggregator = new ListAggregator();
+        int max = aggregator.max(list);
+        if(max != -1){
+            System.out.println("Bug Report #7263\nLists created with values -1, -4, -5, and result should be -1, got " + max + " " + "instead");
+        }
     }
 
     @Test
@@ -19,8 +30,8 @@ public class ListAggregatorTest {
         ListAggregator aggregator = new ListAggregator();
         int sum = aggregator.sum(list);
 
-        Assertions.assertEquals(14, sum);
-        //Isto é um teste
+        Assertions.assertEquals(-10, sum);
+
     }
 
     @Test
@@ -30,7 +41,7 @@ public class ListAggregatorTest {
         ListAggregator aggregator = new ListAggregator();
         int max = aggregator.max(list);
 
-        Assertions.assertEquals(5, max);
+        Assertions.assertEquals(-1, max);
     }
 
     @Test
@@ -40,7 +51,7 @@ public class ListAggregatorTest {
         ListAggregator aggregator = new ListAggregator();
         int min = aggregator.min(list);
 
-        Assertions.assertEquals(1, min);
+        Assertions.assertEquals(-5, min);
     }
 
     @Test
@@ -50,6 +61,6 @@ public class ListAggregatorTest {
         ListAggregator aggregator = new ListAggregator();
         int distinct = aggregator.distinct(list);
 
-        Assertions.assertEquals(4, distinct);
+        Assertions.assertEquals(3, distinct);
     }
 }
