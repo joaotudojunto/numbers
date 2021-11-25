@@ -1,0 +1,2 @@
+Bug Report #8726
+LLists created with values 1, 2, 4, 2 and result should be 3, got 4 instead
