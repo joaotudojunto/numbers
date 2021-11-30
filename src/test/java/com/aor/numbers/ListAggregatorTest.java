@@ -7,43 +7,60 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ListAggregatorTest {
+
+    private List<Integer> list;
+    public List<Integer> helperMethod(){
+        Integer list = null;
+        return Arrays.asList(list);
+
+    }
+
     @Test
     public void sum() {
-        List<Integer> list = Arrays.asList(1,2,4,2,5);
+        helperMethod();
+        //List<Integer> list = Arrays.asList(1,2,4,2,5);
 
         ListAggregator aggregator = new ListAggregator();
-        int sum = aggregator.sum(list);
+        int sum = aggregator.sum(helperMethod());
 
         Assertions.assertEquals(14, sum);
     }
 
     @Test
     public void max() {
-        List<Integer> list = Arrays.asList(1,2,4,2,5);
+        helperMethod();
 
         ListAggregator aggregator = new ListAggregator();
-        int max = aggregator.max(list);
+        int max = aggregator.max(helperMethod());
 
         Assertions.assertEquals(5, max);
     }
 
     @Test
     public void min() {
-        List<Integer> list = Arrays.asList(1,2,4,2,5);
+        helperMethod();
 
         ListAggregator aggregator = new ListAggregator();
-        int min = aggregator.min(list);
+        int min = aggregator.min(helperMethod());
 
         Assertions.assertEquals(1, min);
     }
 
     @Test
     public void distinct() {
-        List<Integer> list = Arrays.asList(1,2,4,2,5);
-
+        /*
+        //helperMethod();
+        //List<Integer> list = Arrays.asList(1,2,4,2,5);
         ListAggregator aggregator = new ListAggregator();
-        int distinct = aggregator.distinct(list);
+        int distinct = aggregator.distinct(Arrays.asList(1,2,4,2), deduplicator);
+        */
+        ListAggregator aggregator = new ListAggregator();
+        ListDeduplicator deduplicator = new ListDeduplicator();
+        int distinct = aggregator.distinct(Arrays.asList(1,2,4,2), deduplicator);
 
         Assertions.assertEquals(4, distinct);
     }
+
+
+
 }
