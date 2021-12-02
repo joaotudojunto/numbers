@@ -38,7 +38,7 @@ public class ListAggregatorTest {
 
     @Test
     public void min() {
-        helperMethod();
+
 
         ListAggregator aggregator = new ListAggregator();
         int min = aggregator.min(list);
@@ -50,7 +50,6 @@ public class ListAggregatorTest {
     public void distinct() {
 
         class ListDeduplicatorStub implements GenericListDeduplicator{
-
 
             @Override
             public List<Integer> deduplicate(List<Integer> list) {
