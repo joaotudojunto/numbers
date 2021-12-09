@@ -7,6 +7,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ListSorterTest {
+    private List<Integer> list;
+    private List<Integer> expected;
 
     @Test
     public void sort() {

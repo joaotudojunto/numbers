@@ -1,5 +1,7 @@
 package com.aor.numbers;
 
+import sun.net.www.content.text.Generic;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,7 +10,9 @@ import java.util.List;
  * from a list.
  */
 public class ListDeduplicator implements GenericListDeduplicator {
+    private final GenericListSorter sorter;
 
+    public ListDeduplicator(GenericListSorter s){this.sorter = s;}
     /**
      * Removes duplicate numbers from a list.
      * @return A list having the same numbers as the original
@@ -16,8 +20,8 @@ public class ListDeduplicator implements GenericListDeduplicator {
      * change.
      */
     public List<Integer> deduplicate(List<Integer> list) {
-        ListSorter listSorter = new ListSorter();
-        List<Integer> sorted = listSorter.sort(list);
+        //ListSorter listSorter = new ListSorter();   // dependencia de ListSorter!!!!!!
+        List<Integer> sorted = sorter.sort(list);
         List<Integer> unique = new ArrayList<>();
 
         Integer last = null;
